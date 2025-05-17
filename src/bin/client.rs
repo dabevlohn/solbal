@@ -10,7 +10,6 @@ use {
     solana_transaction_status::UiTransactionEncoding,
     std::{
         collections::HashMap,
-        env,
         fs::File,
         path::PathBuf,
         sync::Arc,
@@ -557,12 +556,6 @@ impl Action {
 
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {
-    unsafe {
-        env::set_var(
-            env_logger::DEFAULT_FILTER_ENV,
-            env::var_os(env_logger::DEFAULT_FILTER_ENV).unwrap_or_else(|| "info".into()),
-        );
-    }
     env_logger::init();
 
     let args = Args::parse();
